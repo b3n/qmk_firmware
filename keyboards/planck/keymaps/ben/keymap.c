@@ -47,39 +47,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|             |------+------+------+------+------|
  * |   z  |   x  |   c  |   v  |   b  |             |   k  |   m  |   ,  |   .  |   /  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Esc  |Super | Bksp | Sym  |Shift | Ctrl | Alt  |Space | Num  | Tab  |AltGr |Enter |
+ * | Esc  | Alt  | Bksp | Sym  |Shift | Ctrl |Super |Space | Num  | Tab  |AltGr |Enter |
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAK] = {
   {KC_Q,    KC_W,    KC_F,    KC_P,  KC_G,    KC_BTN1, KC_BTN2, KC_J,   KC_L, KC_U,    KC_Y,    KC_QUOT},
   {KC_A,    KC_R,    KC_S,    KC_T,  KC_D,    KC_MS_L, KC_MS_R, KC_H,   KC_N, KC_E,    KC_I,    KC_O },
   {KC_Z,    KC_X,    KC_C,    KC_V,  KC_B,    KC_MS_D, KC_MS_U, KC_K,   KC_M, KC_COMM, KC_DOT,  KC_SLSH},
-  {KC_ESC,  KC_LGUI, KC_BSPC, SYMBL, KC_LSFT, KC_LCTL, KC_LALT, KC_SPC, NUM,  KC_TAB,  KC_RALT, KC_ENT}
+  {KC_ESC,  KC_LALT, KC_BSPC, SYMBL, KC_LSFT, KC_LCTL, KC_LGUI, KC_SPC, NUM,  KC_TAB,  KC_RALT, KC_ENT}
 },
 
 /* Gaming
  * ,----------------------------------.             ,----------------------------------.
- * | Bksp |   q  |   w  |   e  |   r  |             |   t  |  7   |  8   |  9   | Esc  |
- * |------+------+------+------+------|    Mouse    |------+------+------+------+------|
- * |  Alt |   a  |   s  |   d  |   f  |    Keys     |   g  |  4   |  5   |  6   |      |
+ * | Tab  |   q  |   w  |   e  |   r  |  3       6  |   t  |  y   |  u   |  i   |  o   |
  * |------+------+------+------+------|             |------+------+------+------+------|
- * | Shift|   z  |   x  |   c  |   v  |             |   b  |  1   |  2   |  3   |      |
+ * | Alt  |   a  |   s  |   d  |   f  |  2       5  |   g  |  h   |  j   |  k   |  l   |
+ * |------+------+------+------+------|             |------+------+------+------+------|
+ * | Shift|   z  |   x  |   c  |   v  |  1       4  |   b  |  n   |  m   |  p   |  /   |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Ctrl |Super |Colmak| Sym  |           Space           | Num  |  Tab |AltGr |Enter |
+ * | Ctrl |Colmak| Bksp | Sym  |           Space           | Num  |Super | Esc  |Enter |
  * `-----------------------------------------------------------------------------------'
  */
 [_GAMING] = {
- {KC_TAB,  KC_Q,    KC_W,     KC_E,    KC_R,   _______, _______, KC_T,    KC_7,    KC_8,    KC_9,    KC_ESC},
- {KC_LALT, KC_A,    KC_S,     KC_D,    KC_F,   _______, _______, KC_G,    KC_4,    KC_5,    KC_6,    _______},
- {KC_LSFT, KC_Z,    KC_X,     KC_C,    KC_V,   _______, _______, KC_B,    KC_1,    KC_2,    KC_3,    _______},
- {KC_LCTL, _______, GCOLEMAK, _______, KC_SPC, KC_SPC,  KC_SPC,  _______, _______, _______, _______, _______}
+ {KC_TAB,  KC_Q,    KC_W,     KC_E,    KC_R,   KC_3,   KC_6,   KC_T,    KC_Y,    KC_U,    KC_I,   KC_O},
+ {KC_LALT, KC_A,    KC_S,     KC_D,    KC_F,   KC_2,   KC_5,   KC_G,    KC_H,    KC_J,    KC_K,   KC_L},
+ {KC_LSFT, KC_Z,    KC_X,     KC_C,    KC_V,   KC_1,   KC_4,   KC_B,    KC_N,    KC_M,    KC_P,   _______},
+ {KC_LCTL, GCOLEMAK, _______, _______, KC_SPC, KC_SPC, KC_SPC, _______, _______, KC_LGUI, KC_ESC, _______}
 },
 
 [_GAMING_COLEMAK] = {
   {KC_Q,    KC_W,    KC_F,     KC_P,    KC_G,   KC_BTN1, KC_BTN2, KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT},
   {KC_A,    KC_R,    KC_S,     KC_T,    KC_D,   KC_MS_L, KC_MS_R, KC_H,    KC_N,    KC_E,    KC_I,    KC_O},
   {KC_Z,    KC_X,    KC_C,     KC_V,    KC_B,   KC_MS_D, KC_MS_U, KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH},
-  {KC_LCTL, _______, GCOLEMAK, _______, KC_SPC, KC_SPC,  KC_SPC,  _______, _______, _______, _______, _______}
+  {KC_LCTL, _______, _______, _______, KC_SPC, KC_SPC,  KC_SPC,  _______, _______, _______, _______, _______}
 },
 
 /* Symbols
