@@ -6,7 +6,6 @@
 #define CUR_YEN UC(0x00a5)
 #define CUR_BTC UC(0x20bf)
 #define BULLET UC(0x2022)
-#define TSPC UC(0x2009)
 #define EMDASH UC(0x2014)
 #define INTEROBANG UC(0x203D)
 #define ELLIPSIS UC(0x2026)
@@ -90,14 +89,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|             |------+------+------+------+------|
  * |   |  |   “  |   ”  |   [  |   #  |             |   *  |   ]  |   <  |   >  |   ?  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   —  |   ‘  |   ’  |######|   ☺  |   ☹  |   …  |TSpace|######|   ±  |   •  |   ‽  |
+ * |   —  |   ‘  |   ’  |######|   ☺  |   ☹  |   …  |      |######|   ±  |   •  |   ‽  |
  * `-----------------------------------------------------------------------------------'
  */
 [_SYMBL] = {
  {KC_GRV,  KC_CIRC, KC_TILD,  KC_DLR, KC_LCBR, KC_BTN3, KC_BTN4,  KC_EQL,  KC_AMPR, KC_PERC, KC_AT,   KC_DQUO},
  {KC_BSLS, KC_EXLM, KC_UNDS, KC_LPRN, KC_RCBR, KC_WH_L, KC_WH_R,  KC_PLUS, KC_RPRN, KC_MINS, KC_COLN, KC_SCLN},
  {KC_PIPE, LDQUO,   RDQUO,   KC_LBRC, KC_HASH, KC_WH_D, KC_WH_U,  KC_ASTR, KC_RBRC, KC_LABK, KC_RABK, KC_QUES},
- {EMDASH,  LSQUO,   RSQUO,   _______, SMILE,   FROWN,   ELLIPSIS, TSPC,    _______, PLUSMN,  BULLET,  INTEROBANG}
+ {EMDASH,  LSQUO,   RSQUO,   _______, SMILE,   FROWN,   ELLIPSIS, _______,  _______, PLUSMN,  BULLET,  INTEROBANG}
 },
 
 /* Numbers and navigation
@@ -108,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|             |------+------+------+------+------|
  * |      |      |      |      |      |             |  *   |  1   |  2   |  3   |  €   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |Delete|######|      |      |      |TSpace|######|  0   |  .   |  ₿   |
+ * |      |      |Delete|######|      |      |      |      |######|  0   |  .   |  ₿   |
  * `-----------------------------------------------------------------------------------'
  */
  
@@ -116,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   {KC_INS,  KC_HOME, KC_UP,   KC_END,   KC_PGUP,  KC_BTN4, KC_BTN5, KC_PEQL, KC_7,   KC_8, KC_9,   CUR_YEN},
   {_______, KC_LEFT, KC_DOWN, KC_RIGHT, KC_PGDN,  KC_WH_L, KC_WH_R, KC_PPLS, KC_4,   KC_5, KC_6,   CUR_GPB},
   {_______, _______, _______, _______,  _______,  KC_WH_D, KC_WH_U, KC_PAST, KC_1,   KC_2, KC_3,   CUR_EUR},
-  {_______, _______, KC_DEL,  _______,  _______,  _______, _______, TSPC,   _______, KC_0, KC_DOT, CUR_BTC}
+  {_______, _______, KC_DEL,  _______,  _______,  _______, _______, _______, _______, KC_0, KC_DOT, CUR_BTC}
 },
 
 /* Functions (Lower + Raise)
@@ -161,3 +160,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
+
+/*
+TODO
+  Improve ctrl-tab
+  Improve dwm bindings
+ */
