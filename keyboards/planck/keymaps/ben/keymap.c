@@ -46,14 +46,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|             |------+------+------+------+------|
  * |   z  |   x  |   c  |   v  |   b  |             |   k  |   m  |   ,  |   .  |   /  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Esc  | Alt  | Bksp | Sym  |Shift | Ctrl |Super |Space | Num  | Tab  |AltGr |Enter |
+ * | Esc  | Alt  | Bksp | Sym  |Shift |Super | Ctrl |Space | Num  | Tab  |AltGr |Enter |
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAK] = {
   {KC_Q,    KC_W,    KC_F,    KC_P,  KC_G,    KC_BTN1, KC_BTN2, KC_J,   KC_L, KC_U,    KC_Y,    KC_QUOT},
   {KC_A,    KC_R,    KC_S,    KC_T,  KC_D,    KC_MS_L, KC_MS_R, KC_H,   KC_N, KC_E,    KC_I,    KC_O },
   {KC_Z,    KC_X,    KC_C,    KC_V,  KC_B,    KC_MS_D, KC_MS_U, KC_K,   KC_M, KC_COMM, KC_DOT,  KC_SLSH},
-  {KC_ESC,  KC_LALT, KC_BSPC, SYMBL, KC_LSFT, KC_LCTL, KC_LGUI, KC_SPC, NUM,  KC_TAB,  KC_RALT, KC_ENT}
+  {KC_ESC,  KC_LALT, KC_BSPC, SYMBL, KC_LSFT, KC_LGUI, KC_LCTL, KC_SPC, NUM,  KC_TAB,  KC_RALT, KC_ENT}
 },
 
 /* Gaming
@@ -160,9 +160,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
-
-/*
-TODO
-  Improve ctrl-tab
-  Improve dwm bindings
- */
