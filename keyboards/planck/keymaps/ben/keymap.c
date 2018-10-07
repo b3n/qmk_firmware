@@ -1,5 +1,6 @@
 #include "planck.h"
 #include "action_layer.h"
+#include "mousekey.h"
 
 #define CUR_EUR UC(0x20ac)
 #define CUR_GPB UC(0x00a3)
@@ -36,6 +37,13 @@ enum planck_keycodes {
   NUM = MO(_NUM)
 };
 
+enum custom_keycodes {
+                      A_MUL = SAFE_RANGE,
+                      A_MUR,
+                      A_MDL,
+                      A_MDR,
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Colemak
@@ -51,8 +59,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_COLEMAK] = {
   {KC_Q,    KC_W,    KC_F,    KC_P,  KC_G,    KC_BTN1, KC_BTN2, KC_J,   KC_L, KC_U,    KC_Y,    KC_QUOT},
-  {KC_A,    KC_R,    KC_S,    KC_T,  KC_D,    KC_MS_L, KC_MS_R, KC_H,   KC_N, KC_E,    KC_I,    KC_O },
-  {KC_Z,    KC_X,    KC_C,    KC_V,  KC_B,    KC_MS_D, KC_MS_U, KC_K,   KC_M, KC_COMM, KC_DOT,  KC_SLSH},
+  {KC_A,    KC_R,    KC_S,    KC_T,  KC_D,    A_MUL, A_MUR, KC_H,   KC_N, KC_E,    KC_I,    KC_O },
+  {KC_Z,    KC_X,    KC_C,    KC_V,  KC_B,    A_MDL, A_MDR, KC_K,   KC_M, KC_COMM, KC_DOT,  KC_SLSH},
   {KC_ESC,  KC_LALT, KC_BSPC, SYMBL, KC_LSFT, KC_LGUI, KC_LCTL, KC_SPC, NUM,  KC_TAB,  KC_RALT, KC_ENT}
 },
 
@@ -83,9 +91,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Symbols
  * ,----------------------------------.             ,----------------------------------.
- * |   `  |   ^  |   ~  |   $  |   {  |             |   =  |   &  |   %  |   @  |   "  |
+ * |   `  |   ^  |   ~  |   $  |   {  |             |   +  |   &  |   %  |   @  |   "  |
  * |-------------+------+------+------|    Mouse    |------+------+------+------+------|
- * |   \  |   !  |   _  |   (  |   }  |    Keys     |   +  |   )  |   -  |   :  |   ;  |
+ * |   \  |   !  |   _  |   (  |   }  |    Keys     |   =  |   )  |   -  |   :  |   ;  |
  * |------+------+------+------+------|             |------+------+------+------+------|
  * |   |  |   “  |   ”  |   [  |   #  |             |   *  |   ]  |   <  |   >  |   ?  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -93,17 +101,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_SYMBL] = {
- {KC_GRV,  KC_CIRC, KC_TILD,  KC_DLR, KC_LCBR, KC_BTN3, KC_BTN4,  KC_EQL,  KC_AMPR, KC_PERC, KC_AT,   KC_DQUO},
- {KC_BSLS, KC_EXLM, KC_UNDS, KC_LPRN, KC_RCBR, KC_WH_L, KC_WH_R,  KC_PLUS, KC_RPRN, KC_MINS, KC_COLN, KC_SCLN},
+ {KC_GRV,  KC_CIRC, KC_TILD,  KC_DLR, KC_LCBR, KC_BTN3, KC_BTN4,  KC_PLUS,  KC_AMPR, KC_PERC, KC_AT,   KC_DQUO},
+ {KC_BSLS, KC_EXLM, KC_UNDS, KC_LPRN, KC_RCBR, KC_WH_L, KC_WH_R,  KC_EQL, KC_RPRN, KC_MINS, KC_COLN, KC_SCLN},
  {KC_PIPE, LDQUO,   RDQUO,   KC_LBRC, KC_HASH, KC_WH_D, KC_WH_U,  KC_ASTR, KC_RBRC, KC_LABK, KC_RABK, KC_QUES},
  {EMDASH,  LSQUO,   RSQUO,   _______, SMILE,   FROWN,   ELLIPSIS, _______,  _______, PLUSMN,  BULLET,  INTEROBANG}
 },
 
 /* Numbers and navigation
  * ,----------------------------------.             ,----------------------------------.
- * |Insert| Home | Up   | End  | PgUp |             |  =   |  7   |  8   |  9   |  ¥   |
+ * |Insert| Home | Up   | End  | PgUp |             |  +   |  7   |  8   |  9   |  ¥   |
  * |------+------+------+------+------|    Mouse    |------+------+------+------+------|
- * |      | Left | Down | Right|PgDown|    Keys     |  +   |  4   |  5   |  6   |  £   |
+ * |      | Left | Down | Right|PgDown|    Keys     |  =   |  4   |  5   |  6   |  £   |
  * |------+------+------+------+------|             |------+------+------+------+------|
  * |      |      |      |      |      |             |  *   |  1   |  2   |  3   |  €   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -112,8 +120,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
  
 [_NUM] = {
-  {KC_INS,  KC_HOME, KC_UP,   KC_END,   KC_PGUP,  KC_BTN4, KC_BTN5, KC_PEQL, KC_7,   KC_8, KC_9,   CUR_YEN},
-  {_______, KC_LEFT, KC_DOWN, KC_RIGHT, KC_PGDN,  KC_WH_L, KC_WH_R, KC_PPLS, KC_4,   KC_5, KC_6,   CUR_GPB},
+  {KC_INS,  KC_HOME, KC_UP,   KC_END,   KC_PGUP,  KC_BTN4, KC_BTN5, KC_PPLS, KC_7,   KC_8, KC_9,   CUR_YEN},
+  {_______, KC_LEFT, KC_DOWN, KC_RIGHT, KC_PGDN,  KC_WH_L, KC_WH_R, KC_PEQL, KC_4,   KC_5, KC_6,   CUR_GPB},
   {_______, _______, _______, _______,  _______,  KC_WH_D, KC_WH_U, KC_PAST, KC_1,   KC_2, KC_3,   CUR_EUR},
   {_______, _______, KC_DEL,  _______,  _______,  _______, _______, _______, _______, KC_0, KC_DOT, CUR_BTC}
 },
@@ -139,24 +147,96 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
+int direction[4];
+bool process_mouse(uint16_t keycode, keyrecord_t *record) {
+  enum udlr { up, down, left, right };
+
+  if (keycode == A_MUR) {
+    if (record->event.pressed) {
+      direction[up] += 1;
+      direction[right] += 1;
+    } else {
+      direction[up] -= 1;
+      direction[right] -= 1;
+    }
+  }
+
+  if (keycode == A_MDR) {
+    if (record->event.pressed) {
+      direction[down] += 1;
+      direction[right] += 1;
+    } else {
+      direction[down] -= 1;
+      direction[right] -= 1;
+    }
+  }
+
+  if (keycode == A_MUL) {
+    if (record->event.pressed) {
+      direction[up] += 1;
+      direction[left] += 1;
+    } else {
+      direction[up] -= 1;
+      direction[left] -= 1;
+    }
+  }
+
+  if (keycode == A_MDL) {
+    if (record->event.pressed) {
+      direction[down] += 1;
+      direction[left] += 1;
+    } else {
+      direction[down] -= 1;
+      direction[left] -= 1;
+    }
+  }
+
+  int enabled = 1;
+  for (int i=0; i<4; i++) {
+    if (direction[i] == 2) {
+      enabled = 2;
+      break;
+    }
+  }
+
+  if (direction[up] == enabled) mousekey_on(KC_MS_UP);
+  else mousekey_off(KC_MS_UP);
+
+  if (direction[down] == enabled) mousekey_on(KC_MS_DOWN);
+  else mousekey_off(KC_MS_DOWN);
+
+  if (direction[left] == enabled) mousekey_on(KC_MS_LEFT);
+  else mousekey_off(KC_MS_LEFT);
+
+  if (direction[right] == enabled) mousekey_on(KC_MS_RIGHT);
+  else mousekey_off(KC_MS_RIGHT);
+
+  mousekey_send();
+  return true;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case SYMBL:
-      if (record->event.pressed) {
-        layer_on(_SYMBL);
-      } else {
-        layer_off(_SYMBL);
-      }
-      update_tri_layer(_SYMBL, _NUM, _FUNC);
-      break;
-    case NUM:
-      if (record->event.pressed) {
-        layer_on(_NUM);
-      } else {
-        layer_off(_NUM);
-      }
-      update_tri_layer(_SYMBL, _NUM, _FUNC);
-      break;
+  case SYMBL:
+    if (record->event.pressed) {
+      layer_on(_SYMBL);
+    } else {
+      layer_off(_SYMBL);
+    }
+    update_tri_layer(_SYMBL, _NUM, _FUNC);
+    break;
+
+  case NUM:
+    if (record->event.pressed) {
+      layer_on(_NUM);
+    } else {
+      layer_off(_NUM);
+    }
+    update_tri_layer(_SYMBL, _NUM, _FUNC);
+    break;
   }
+
+  process_mouse(keycode, record);
+
   return true;
 }
